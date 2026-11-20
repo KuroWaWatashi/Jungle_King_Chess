@@ -1,0 +1,40 @@
+.menu-button_text {
+    position: absolute;
+    top: var(--button-y);
+    left: var(--button-x);
+    transform: translateX(-50%);
+    font-family: var(--font-family, 'Minecraft');
+    color: white;
+    font-size: var(--font-size, 20px);
+    width: 200px;
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('static/fonts/Minecraft_Font.ttf') format('truetype');
+    font-display: swap;
+}
+
+.menu-button_text {
+    font-family: 'Minecraft';
+    color: white;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.menu-button_text_img {
+    position: absolute;
+    top: var(--button-y);
+    left: var(--button-x);
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.menu-button_text:select, .menu-button_text.selected {
+    color: green;
+}

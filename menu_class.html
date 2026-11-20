@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ favicon_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu_class.css') }}">
+    <style>
+        :root {
+        --menu-bg: {{ menu_bg_img_path }};
+        --title-x: {{ title_x_pos }};
+        --title-y: {{ title_y_pos }};
+        --title-size: {{ menu_title_input_font_size }};
+        --title-img-width: {{ title_img_scaling_x }};
+        --title-img-height: {{ title_img_scaling_y }};
+      }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button_class.css') }}">
+    <style>
+      @font-face {
+        font-family: 'Minecraft';
+        src: url('{{ url_for("static", filename=button_input_font) }}') format('truetype');
+      }
+      :root {
+        --button-x: {{ button_x_pos }};
+        --button-y: {{ button_y_pos }};
+        --font-family: 'Minecraft';
+        --font-size: {{ button_input_font_size }};
+      }
+    </style>
+    <script defer src="{{ url_for('static', filename='js/button_class.js') }}"></script>
+  </head>
+  <body onkeydown="arrow_keys_event(event)">
+    <div class="menu-container" style="background-image: url('{{ menu_bg_img_path }}');"></div>
+    {% if menu_title_img %}
+        <img class="menu-title_img" src="{{ menu_title_img }}">
+    {% endif %}
+
+    {% if menu_title %}
+        <h1 class="menu-title">{{ menu_title }}</h1>
+    {% endif %}
+
+    {% for button in buttons %}
+        <button class="menu-button_text"
+                style="top: {{ button.button_y_pos }}; left: {{ button.button_x_pos }};"
+                onclick="location.href='{{ button.url }}'">
+            {{ button.button_text }}
+        </button>
+    {% endfor %}
+  </body>
+</html>
